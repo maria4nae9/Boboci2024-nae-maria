@@ -52,6 +52,7 @@ import static org.firstinspires.ftc.teamcode.drive.robot.DriveConstants.kV;
 
 @Config
 public class  SampleMecanumDrive extends MecanumDrive {
+    //este Main classul care are mai multe methods
     public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(0, 0, 0);
     public static PIDCoefficients HEADING_PID = new PIDCoefficients(0, 0, 0);
 
@@ -79,8 +80,9 @@ public class  SampleMecanumDrive extends MecanumDrive {
     private List<Integer> lastEncVels = new ArrayList<>();
 
     public SampleMecanumDrive(HardwareMap hardwareMap) {
+        //public class
         super(kV, kA, kStatic, TRACK_WIDTH, TRACK_WIDTH, LATERAL_MULTIPLIER);
-
+        //follower e de tip reference
         follower = new HolonomicPIDVAFollower(TRANSLATIONAL_PID, TRANSLATIONAL_PID, HEADING_PID,
                 new Pose2d(0.5, 0.5, Math.toRadians(5.0)), 0.5);
 
@@ -160,6 +162,7 @@ public class  SampleMecanumDrive extends MecanumDrive {
     }
 
     public void turnAsync(double angle) {
+        //method de tip void 
         trajectorySequenceRunner.followTrajectorySequenceAsync(
                 trajectorySequenceBuilder(getPoseEstimate())
                         .turn(angle)
